@@ -5,6 +5,7 @@ public class EstudantePos {
     private int mat_est;
     private String nome;
     private int idade;
+    private String tipo_curso
     private int num_dep;
     private int mat_est_aconselhador;
 
@@ -32,6 +33,14 @@ public class EstudantePos {
         this.idade = idade;
     }
 
+    public String getTipo_curso() {
+        return tipo_curso;
+    }
+
+    public void setTipo_curso(String tipo_curso) {
+        this.tipo_curso = tipo_curso;
+    }
+
     public int getNum_dep() {
         return num_dep;
     }
@@ -54,6 +63,7 @@ public class EstudantePos {
                 "mat_est=" + mat_est +
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +
+                ", tipo_curso='" + tipo_curso + '\'' +
                 ", num_dep=" + num_dep +
                 ", mat_est_aconselhador=" + mat_est_aconselhador +
                 '}';
