@@ -40,7 +40,9 @@ public class Main {
 //        estudantePosDAO.delete(4);
 //        List e = estudantePosDAO.selectAll();
 //        System.out.println(e.toString());
-            ViewProfessor viewProfessor = new ViewProfessor();
+
+//            ViewProfessor viewProfessor = new ViewProfessor();
+        ViewEstudantePos viewEstudantePos = new ViewEstudantePos();
 
     }
 }
