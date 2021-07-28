@@ -5,7 +5,7 @@ public class EstudantePos {
     private int mat_est;
     private String nome;
     private int idade;
-    private String tipo_curso
+    private String tipo_curso;
     private int num_dep;
     private int mat_est_aconselhador;
 
