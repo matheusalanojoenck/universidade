@@ -41,8 +41,9 @@ public class Main {
 //        List e = estudantePosDAO.selectAll();
 //        System.out.println(e.toString());
 
-//            ViewProfessor viewProfessor = new ViewProfessor();
+        ViewProfessor viewProfessor = new ViewProfessor();
         ViewEstudantePos viewEstudantePos = new ViewEstudantePos();
+        ViewDepartamento viewDepartamento = new ViewDepartamento();
 
     }
 }
