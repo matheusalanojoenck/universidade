@@ -88,19 +88,32 @@ public class ViewInsertProfessor extends JFrame {
         adicionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adicionar();
+                if(adicionar()){
+                    clearTF();
+                    JOptionPane.showConfirmDialog(null, "Inserção realizada com sucesso", "", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showConfirmDialog(null, "Inserção não realizada", "", JOptionPane.DEFAULT_OPTION);
+                }
             }
         });
     }
 
-    private void adicionar(){
+    private boolean adicionar(){
         ProfessorDAO professorDAO = ProfessorDAO.getInstance();
-        professorDAO.insert(
+        return professorDAO.insert(
                 Integer.parseInt(mat_profTF.getText().toString()),
                 nomeTF.getText().toString(),
                 Integer.parseInt(idadeTF.getText().toString()),
                 salaTF.getText().toString(),
                 especialidadeTF.getText().toString()
         );
+    }
+
+    private void clearTF(){
+        mat_profTF.setText("");
+        nomeTF.setText("");
+        idadeTF.setText("");
+        salaTF.setText("");
+        especialidadeTF.setText("");
     }
 }
