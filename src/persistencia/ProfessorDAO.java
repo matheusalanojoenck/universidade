@@ -93,13 +93,14 @@ public class ProfessorDAO {
         }
     }
 
-    public void delete(int mat_prof){
+    public boolean delete(int mat_prof){
         try {
             deleteProfessor.setInt(1, mat_prof);
-
             deleteProfessor.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }

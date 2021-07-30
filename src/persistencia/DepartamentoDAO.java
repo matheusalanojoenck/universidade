@@ -92,13 +92,14 @@ public class DepartamentoDAO {
         }
     }
 
-    public void delete(int num_dep){
+    public boolean delete(int num_dep){
         try {
             deleteDepartamento.setInt(1, num_dep);
-
             deleteDepartamento.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }

@@ -99,13 +99,14 @@ public class EstudantePosDAO {
         }
     }
 
-    public void delete(int mat_est){
+    public boolean delete(int mat_est){
         try {
             deleteEstudantePos.setInt(1, mat_est);
-
             deleteEstudantePos.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }
