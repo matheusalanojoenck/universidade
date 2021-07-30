@@ -77,7 +77,7 @@ public class ProfessorDAO {
         return professores;
     }
 
-    public void insert(int mat_prof, String nome, int idade, String sala, String especialidade){
+    public boolean insert(int mat_prof, String nome, int idade, String sala, String especialidade){
         try {
             insertProfessor.setInt(1, mat_prof);
             insertProfessor.setString(2, nome);
@@ -86,8 +86,10 @@ public class ProfessorDAO {
             insertProfessor.setString(5, especialidade);
 
             insertProfessor.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
