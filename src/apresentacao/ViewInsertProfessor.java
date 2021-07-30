@@ -22,7 +22,6 @@ public class ViewInsertProfessor extends JFrame {
     public ViewInsertProfessor(){
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        //panel.setSize();
 
         mat_profLabel = new JLabel("mat_prof ", JLabel.RIGHT);
         c.gridx = 0;
