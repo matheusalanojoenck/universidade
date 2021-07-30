@@ -5,10 +5,19 @@ import persistencia.ProfessorDAO;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ViewProfessor extends JFrame {
     public ViewProfessor(){
+        JPanel topPanel = new JPanel();
+        JPanel btnPanlel = new JPanel();
+
+        this.add(topPanel, BorderLayout.CENTER);
+        this.add(btnPanlel, BorderLayout.SOUTH);
+
         String[] colums = new String[]{
             "mat_prof", "nome", "idade", "sala", "especiliadade"
         };
@@ -29,10 +38,21 @@ public class ViewProfessor extends JFrame {
             });
         });
 
-        this.add(new JScrollPane(table));
+        topPanel.add(new JScrollPane(table));
+
+        JButton adicionarProfessor = new JButton("Adicionar Professor");
+        btnPanlel.add(adicionarProfessor);
+
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
+
+        adicionarProfessor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ViewInsertProfessor();
+            }
+        });
     }
 }
