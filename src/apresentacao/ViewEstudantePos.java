@@ -5,10 +5,17 @@ import persistencia.EstudantePosDAO;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.List;
 
 public class ViewEstudantePos extends JFrame {
     public ViewEstudantePos(){
+        JPanel topPanel = new JPanel();
+        JPanel btnPanlel = new JPanel();
+
+        this.add(topPanel, BorderLayout.CENTER);
+        this.add(btnPanlel, BorderLayout.SOUTH);
+
         String[] colums = new String[]{
                 "mat_est", "nome", "idade", "tipo_curso", "num_dep", "mat_est_aconselhador"
         };
@@ -29,6 +36,12 @@ public class ViewEstudantePos extends JFrame {
                     estudante.getMat_est_aconselhador()
             });
         });
+
+        topPanel.add(new JScrollPane(table));
+
+        JButton adicionarDepartamento = new JButton("Adicionar Estudante");
+        btnPanlel.add(adicionarDepartamento);
+
         table.setEnabled(false);
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
