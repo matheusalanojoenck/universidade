@@ -7,10 +7,19 @@ import persistencia.ProfessorDAO;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ViewDepartamento extends JFrame {
     public ViewDepartamento() {
+        JPanel topPanel = new JPanel();
+        JPanel btnPanlel = new JPanel();
+
+        this.add(topPanel, BorderLayout.CENTER);
+        this.add(btnPanlel, BorderLayout.SOUTH);
+
         String[] colums = new String[]{
                 "num_dep", "nome", "escritorio", "mat_prof"
         };
@@ -30,10 +39,22 @@ public class ViewDepartamento extends JFrame {
             });
         });
 
+        topPanel.add(new JScrollPane(table));
+
+        JButton adicionarDepartamento = new JButton("Adicionar Departamento");
+        btnPanlel.add(adicionarDepartamento);
+
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
+
+        adicionarDepartamento.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ViewInsertDepartamento();
+            }
+        });
     }
 }
