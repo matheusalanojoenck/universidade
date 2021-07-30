@@ -44,6 +44,9 @@ public class ViewDepartamento extends JFrame {
         JButton adicionarDepartamento = new JButton("Adicionar Departamento");
         btnPanlel.add(adicionarDepartamento);
 
+        JButton deletar = new JButton("Deletar");
+        btnPanlel.add(deletar);
+
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -56,5 +59,24 @@ public class ViewDepartamento extends JFrame {
                 new ViewInsertDepartamento();
             }
         });
+
+        deletar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                    int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                    if(deletar(id)){
+                        dispose();
+                        new ViewDepartamento();
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean deletar(int id){
+        DepartamentoDAO departamentoDAO = DepartamentoDAO.getInstance();
+        return departamentoDAO.delete(id);
     }
 }
