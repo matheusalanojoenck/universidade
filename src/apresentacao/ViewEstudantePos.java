@@ -32,6 +32,7 @@ public class ViewEstudantePos extends JFrame {
         table.setEnabled(false);
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
     }

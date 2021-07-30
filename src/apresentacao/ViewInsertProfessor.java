@@ -83,6 +83,7 @@ public class ViewInsertProfessor extends JFrame {
         this.add(panel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
         adicionarButton.addActionListener(new ActionListener() {
