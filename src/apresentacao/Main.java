@@ -44,7 +44,8 @@ public class Main {
 //        ViewProfessor viewProfessor = new ViewProfessor();
 //        ViewEstudantePos viewEstudantePos = new ViewEstudantePos();
 //        ViewDepartamento viewDepartamento = new ViewDepartamento();
-        ViewInsertProfessor viewInsertProfessor = new ViewInsertProfessor();
+//        ViewInsertProfessor viewInsertProfessor = new ViewInsertProfessor();
+        new ViewMain();
 
     }
 }
