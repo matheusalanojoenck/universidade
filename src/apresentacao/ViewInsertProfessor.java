@@ -16,8 +16,8 @@ public class ViewInsertProfessor extends JFrame {
     private JTextField idadeTF;
     private JLabel salaLabel;
     private JTextField salaTF;
-    JLabel especialidadeLabel;
-    JTextField especialidadeTF;
+    private JLabel especialidadeLabel;
+    private JTextField especialidadeTF;
 
     public ViewInsertProfessor(){
         JPanel panel = new JPanel(new GridBagLayout());
