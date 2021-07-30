@@ -31,7 +31,7 @@ public class ViewDepartamento extends JFrame {
         });
 
         this.add(new JScrollPane(table));
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
