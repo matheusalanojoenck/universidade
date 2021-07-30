@@ -6,6 +6,8 @@ import persistencia.EstudantePosDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ViewEstudantePos extends JFrame {
@@ -41,12 +43,19 @@ public class ViewEstudantePos extends JFrame {
 
         JButton adicionarDepartamento = new JButton("Adicionar Estudante");
         btnPanlel.add(adicionarDepartamento);
-
+        
         table.setEnabled(false);
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
+
+        adicionarDepartamento.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ViewInsertEstudantePos();
+            }
+        });
     }
 }
