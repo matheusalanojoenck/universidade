@@ -28,7 +28,7 @@ public class ViewInsertProfessor extends JFrame {
         c.gridy = 0;
         panel.add(mat_profLabel, c);
 
-        mat_profTF = new JTextField(JTextField.LEFT);
+        mat_profTF = new JTextField(JTextField.RIGHT);
         c.gridx = 1;
         c.gridy = 0;
         panel.add(mat_profTF, c);
@@ -38,7 +38,7 @@ public class ViewInsertProfessor extends JFrame {
         c.gridy = 1;
         panel.add(nomeLabel, c);
 
-        nomeTF = new JTextField(JTextField.LEFT);
+        nomeTF = new JTextField(JTextField.RIGHT);
         c.gridx = 1;
         c.gridy = 1;
         panel.add(nomeTF, c);
@@ -48,7 +48,7 @@ public class ViewInsertProfessor extends JFrame {
         c.gridy = 2;
         panel.add(idadeLabel, c);
 
-        idadeTF = new JTextField(JTextField.LEFT);
+        idadeTF = new JTextField(JTextField.RIGHT);
         c.gridx = 1;
         c.gridy = 2;
         panel.add(idadeTF, c);
@@ -58,7 +58,7 @@ public class ViewInsertProfessor extends JFrame {
         c.gridy = 3;
         panel.add(salaLabel, c);
 
-        salaTF = new JTextField(JTextField.LEFT);
+        salaTF = new JTextField(JTextField.RIGHT);
         c.gridx = 1;
         c.gridy = 3;
         panel.add(salaTF, c);
@@ -68,7 +68,7 @@ public class ViewInsertProfessor extends JFrame {
         c.gridy = 4;
         panel.add(especialidadeLabel, c);
 
-        especialidadeTF = new JTextField(JTextField.LEFT);
+        especialidadeTF = new JTextField(JTextField.RIGHT);
         c.gridx = 1;
         c.gridy = 4;
         panel.add(especialidadeTF, c);
