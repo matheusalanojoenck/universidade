@@ -77,7 +77,7 @@ public class DepartamentoDAO {
         return departamentos;
     }
 
-    public void insert(int num_dep, String nome, String escritorio, int mat_prof){
+    public boolean insert(int num_dep, String nome, String escritorio, int mat_prof){
         try {
             insertDepartamento.setInt(1, num_dep);
             insertDepartamento.setString(2, nome);
@@ -85,8 +85,10 @@ public class DepartamentoDAO {
             insertDepartamento.setInt(4, mat_prof);
 
             insertDepartamento.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
