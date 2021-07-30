@@ -82,7 +82,7 @@ public class EstudantePosDAO {
         return estudantesPos;
     }
 
-    public void insert(int mat_est, String nome, int idade,  String tipo_curso, int num_dep,int mat_est_aconselhador){
+    public boolean insert(int mat_est, String nome, int idade,  String tipo_curso, int num_dep,int mat_est_aconselhador){
         try {
             insertEstudantePos.setInt(1, mat_est);
             insertEstudantePos.setString(2, nome);
@@ -92,8 +92,10 @@ public class EstudantePosDAO {
             insertEstudantePos.setInt(6, mat_est_aconselhador);
 
             insertEstudantePos.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
