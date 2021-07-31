@@ -48,6 +48,9 @@ public class ViewEstudantePos extends JFrame {
         JButton deletar = new JButton("Deletar");
         btnPanlel.add(deletar);
 
+        JButton update = new JButton("Update");
+        btnPanlel.add(update);
+
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -75,9 +78,35 @@ public class ViewEstudantePos extends JFrame {
                 }
             }
         });
+
+        update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                   boolean result = update(
+                           Integer.parseInt(table.getValueAt(row, 0).toString()),
+                           table.getValueAt(row, 1).toString(),
+                           Integer.parseInt(table.getValueAt(row, 2).toString()),
+                           table.getValueAt(row, 3).toString(),
+                           Integer.parseInt(table.getValueAt(row, 4).toString()),
+                           Integer.parseInt(table.getValueAt(row, 5).toString())
+                   );
+                    if(result){
+                        dispose();
+                        new ViewEstudantePos();
+                    }
+                }
+            }
+        });
     }
     private boolean deletar(int id){
         EstudantePosDAO estudantePosDAO = EstudantePosDAO.getInstance();
         return estudantePosDAO.delete(id);
+    }
+
+    private boolean update(int mat_est, String nome, int idade,  String tipo_curso, int num_dep,int mat_est_aconselhador){
+        EstudantePosDAO estudantePosDAO = EstudantePosDAO.getInstance();
+        return estudantePosDAO.update(mat_est, nome, idade, tipo_curso, num_dep, mat_est_aconselhador);
     }
 }
