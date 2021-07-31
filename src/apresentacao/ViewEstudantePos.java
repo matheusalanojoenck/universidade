@@ -73,7 +73,10 @@ public class ViewEstudantePos extends JFrame {
                     int id = Integer.parseInt(table.getValueAt(row, 0).toString());
                     if(deletar(id)){
                         dispose();
+                        JOptionPane.showConfirmDialog(null, "Remoção realizada com sucesso", "", JOptionPane.DEFAULT_OPTION);
                         new ViewEstudantePos();
+                    } else{
+                        JOptionPane.showConfirmDialog(null, "Remoção não realizada", "", JOptionPane.DEFAULT_OPTION);
                     }
                 }
             }
