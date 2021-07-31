@@ -118,13 +118,13 @@ public class ProfessorDAO {
 
     public boolean update(int mat_prof, String nome, int idade, String sala, String especialidade){
         try {
-            insertProfessor.setString(1, nome);
-            insertProfessor.setInt(2, idade);
-            insertProfessor.setString(3, sala);
-            insertProfessor.setString(4, especialidade);
-            insertProfessor.setInt(5, mat_prof);
+            updateProfessor.setString(1, nome);
+            updateProfessor.setInt(2, idade);
+            updateProfessor.setString(3, sala);
+            updateProfessor.setString(4, especialidade);
+            updateProfessor.setInt(5, mat_prof);
 
-            insertProfessor.executeUpdate();
+            updateProfessor.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
