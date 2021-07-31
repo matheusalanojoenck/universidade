@@ -55,6 +55,7 @@ public class ViewProfessor extends JFrame {
         adicionarProfessor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 new ViewInsertProfessor();
             }
         });

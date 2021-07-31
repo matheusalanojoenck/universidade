@@ -57,6 +57,7 @@ public class ViewEstudantePos extends JFrame {
         adicionarDepartamento.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 new ViewInsertEstudantePos();
             }
         });
