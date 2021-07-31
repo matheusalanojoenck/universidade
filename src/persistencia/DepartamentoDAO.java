@@ -12,6 +12,7 @@ public class DepartamentoDAO {
     private PreparedStatement selectAllDepartamento;
     private PreparedStatement insertDepartamento;
     private PreparedStatement deleteDepartamento;
+    private PreparedStatement updateDepartamento;
 
     public static DepartamentoDAO getInstance() {
         if (instance == null) instance = new DepartamentoDAO();
@@ -37,6 +38,14 @@ public class DepartamentoDAO {
             deleteDepartamento = connection.prepareStatement(
                     "DELETE FROM departamento " +
                         "WHERE num_dep = ?");
+
+            updateDepartamento = connection.prepareStatement(
+                    "UPDATE departamento " +
+                            "SET nome = ?," +
+                                "escritorio = ?," +
+                                "mat_prof = ? " +
+                            "WHERE num_dep = ?"
+            );
 
         } catch (SQLException  | NullPointerException e){
             e.printStackTrace();
@@ -96,6 +105,20 @@ public class DepartamentoDAO {
         try {
             deleteDepartamento.setInt(1, num_dep);
             deleteDepartamento.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean update(int num_dep, String nome, String escritorio, int mat_prof){
+        try {
+            updateDepartamento.setString(1, nome);
+            updateDepartamento.setString(2, escritorio);
+            updateDepartamento.setInt(3, mat_prof);
+            updateDepartamento.setInt(4, num_dep);
+            updateDepartamento.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
