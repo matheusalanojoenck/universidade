@@ -91,7 +91,10 @@ public class ViewProfessor extends JFrame {
                     );
                     if (result){
                         dispose();
+                        JOptionPane.showConfirmDialog(null, "Update realizado com sucesso", "", JOptionPane.DEFAULT_OPTION);
                         new ViewProfessor();
+                    }else{
+                        JOptionPane.showConfirmDialog(null, "Update não realizado", "", JOptionPane.DEFAULT_OPTION);
                     }
                 }
             }

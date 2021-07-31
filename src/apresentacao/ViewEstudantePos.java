@@ -94,7 +94,10 @@ public class ViewEstudantePos extends JFrame {
                    );
                     if(result){
                         dispose();
+                        JOptionPane.showConfirmDialog(null, "Update realizado com sucesso", "", JOptionPane.DEFAULT_OPTION);
                         new ViewEstudantePos();
+                    } else{
+                        JOptionPane.showConfirmDialog(null, "Update não realizado", "", JOptionPane.DEFAULT_OPTION);
                     }
                 }
             }
