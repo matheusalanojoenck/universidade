@@ -47,6 +47,9 @@ public class ViewDepartamento extends JFrame {
         JButton deletar = new JButton("Deletar");
         btnPanlel.add(deletar);
 
+        JButton update = new JButton("Update");
+        btnPanlel.add(update);
+
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -74,10 +77,35 @@ public class ViewDepartamento extends JFrame {
                 }
             }
         });
+
+        update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                    boolean result = update(
+                            Integer.parseInt(table.getValueAt(row, 0).toString()),
+                            table.getValueAt(row, 1).toString(),
+                            table.getValueAt(row, 2).toString(),
+                            Integer.parseInt(table.getValueAt(row, 3).toString())
+                    );
+
+                    if(result){
+                        dispose();
+                        new ViewDepartamento();
+                    }
+                }
+            }
+        });
     }
 
     private boolean deletar(int id){
         DepartamentoDAO departamentoDAO = DepartamentoDAO.getInstance();
         return departamentoDAO.delete(id);
+    }
+
+    private boolean update(int num_dep, String nome, String escritorio, int mat_prof){
+        DepartamentoDAO departamentoDAO  = DepartamentoDAO.getInstance();
+        return departamentoDAO.update(num_dep, nome, escritorio, mat_prof);
     }
 }
