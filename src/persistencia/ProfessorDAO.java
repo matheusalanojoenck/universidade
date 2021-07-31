@@ -11,6 +11,7 @@ public class ProfessorDAO {
     private PreparedStatement selectAllProfessor;
     private PreparedStatement insertProfessor;
     private PreparedStatement deleteProfessor;
+    private PreparedStatement updateProfessor;
 
     public static ProfessorDAO getInstance() {
         if (instance == null) instance = new ProfessorDAO();
@@ -36,6 +37,17 @@ public class ProfessorDAO {
             deleteProfessor = connection.prepareStatement(
                     "DELETE FROM professor " +
                         "WHERE mat_prof = ?");
+
+            updateProfessor = connection.prepareStatement(
+                    "UPDATE professor " +
+                            "SET nome = ?," +
+                                "idade = ?," +
+                                "sala = ?," +
+                                "especialidade = ? " +
+                            "WHERE mat_prof = ?"
+            );
+
+
 
         } catch (SQLException  | NullPointerException e){
             e.printStackTrace();
@@ -97,6 +109,22 @@ public class ProfessorDAO {
         try {
             deleteProfessor.setInt(1, mat_prof);
             deleteProfessor.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean update(int mat_prof, String nome, int idade, String sala, String especialidade){
+        try {
+            insertProfessor.setString(1, nome);
+            insertProfessor.setInt(2, idade);
+            insertProfessor.setString(3, sala);
+            insertProfessor.setString(4, especialidade);
+            insertProfessor.setInt(5, mat_prof);
+
+            insertProfessor.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
