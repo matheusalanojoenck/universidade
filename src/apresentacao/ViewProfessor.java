@@ -1,6 +1,7 @@
 package apresentacao;
 
 import dados.Professor;
+import persistencia.DepartamentoDAO;
 import persistencia.ProfessorDAO;
 
 import javax.swing.*;
@@ -43,6 +44,9 @@ public class ViewProfessor extends JFrame {
         JButton adicionarProfessor = new JButton("Adicionar Professor");
         btnPanlel.add(adicionarProfessor);
 
+        JButton deletar = new JButton("Deletar");
+        btnPanlel.add(deletar);
+
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
@@ -54,5 +58,23 @@ public class ViewProfessor extends JFrame {
                 new ViewInsertProfessor();
             }
         });
+
+        deletar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                    int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                    if(deletar(id)){
+                        dispose();
+                        new ViewProfessor();
+                    }
+                }
+            }
+        });
+    }
+    private boolean deletar(int id){
+        ProfessorDAO professorDAO = ProfessorDAO.getInstance();
+        return professorDAO.delete(id);
     }
 }

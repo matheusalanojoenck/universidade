@@ -1,6 +1,7 @@
 package apresentacao;
 
 import dados.EstudantePos;
+import persistencia.DepartamentoDAO;
 import persistencia.EstudantePosDAO;
 
 import javax.swing.*;
@@ -43,8 +44,10 @@ public class ViewEstudantePos extends JFrame {
 
         JButton adicionarDepartamento = new JButton("Adicionar Estudante");
         btnPanlel.add(adicionarDepartamento);
-        
-        table.setEnabled(false);
+
+        JButton deletar = new JButton("Deletar");
+        btnPanlel.add(deletar);
+
         this.add(new JScrollPane(table));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -57,5 +60,23 @@ public class ViewEstudantePos extends JFrame {
                 new ViewInsertEstudantePos();
             }
         });
+
+        deletar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                    int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                    if(deletar(id)){
+                        dispose();
+                        new ViewEstudantePos();
+                    }
+                }
+            }
+        });
+    }
+    private boolean deletar(int id){
+        EstudantePosDAO estudantePosDAO = EstudantePosDAO.getInstance();
+        return estudantePosDAO.delete(id);
     }
 }
