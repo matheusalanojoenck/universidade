@@ -47,6 +47,9 @@ public class ViewProfessor extends JFrame {
         JButton deletar = new JButton("Deletar");
         btnPanlel.add(deletar);
 
+        JButton update = new JButton("Update");
+        btnPanlel.add(update);
+
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
@@ -73,9 +76,40 @@ public class ViewProfessor extends JFrame {
                 }
             }
         });
+
+        update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!table.getSelectionModel().isSelectionEmpty()){
+                    int row = table.getSelectedRow();
+                    boolean result = update(
+                            Integer.parseInt(table.getValueAt(row, 0).toString()),
+                            table.getValueAt(row, 1).toString(),
+                            Integer.parseInt(table.getValueAt(row, 2).toString()),
+                            table.getValueAt(row, 3).toString(),
+                            table.getValueAt(row, 4).toString()
+                    );
+                    if (result){
+                        dispose();
+                        new ViewProfessor();
+                    }
+                }
+            }
+        });
     }
     private boolean deletar(int id){
         ProfessorDAO professorDAO = ProfessorDAO.getInstance();
         return professorDAO.delete(id);
+    }
+
+    private boolean update(int mat_prof, String nome, int idade, String sala, String especialidade){
+        ProfessorDAO professorDAO = ProfessorDAO.getInstance();
+        return professorDAO.update(
+                mat_prof,
+                nome,
+                idade,
+                sala,
+                especialidade
+        );
     }
 }
