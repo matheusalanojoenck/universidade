@@ -13,6 +13,7 @@ public class EstudantePosDAO {
     private PreparedStatement selectAllEstudantePos;
     private PreparedStatement insertEstudantePos;
     private PreparedStatement deleteEstudantePos;
+    private PreparedStatement updateEstudantePos;
 
     public static EstudantePosDAO getInstance() {
         if (instance == null) instance = new EstudantePosDAO();
@@ -38,6 +39,17 @@ public class EstudantePosDAO {
             deleteEstudantePos = connection.prepareStatement(
                     "DELETE FROM estudante_pos " +
                             "WHERE mat_est = ?");
+
+            updateEstudantePos = connection.prepareStatement(
+                    "UPDATE estudante_pos " +
+                        "SET nome = ?," +
+                            "idade = ?," +
+                            "tipo_curso = ?," +
+                            "num_dep = ?," +
+                            "mat_est_aconselhador = ? " +
+                        "WHERE mat_est = ?"
+
+            );
 
         } catch (SQLException | NullPointerException e) {
             e.printStackTrace();
@@ -103,6 +115,23 @@ public class EstudantePosDAO {
         try {
             deleteEstudantePos.setInt(1, mat_est);
             deleteEstudantePos.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean update(int mat_est, String nome, int idade,  String tipo_curso, int num_dep,int mat_est_aconselhador){
+        try {
+            updateEstudantePos.setString(1, nome);
+            updateEstudantePos.setInt(2, idade);
+            updateEstudantePos.setString(3, tipo_curso);
+            updateEstudantePos.setInt(4, num_dep);
+            updateEstudantePos.setInt(5, mat_est_aconselhador);
+            updateEstudantePos.setInt(6, mat_est);
+
+            updateEstudantePos.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
